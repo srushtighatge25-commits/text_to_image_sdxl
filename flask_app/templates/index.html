@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Text-to-Image Generator | SDXL</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Text-to-Image Generator</h1>
+      <p>Stable Diffusion XL &bull; Hugging Face Diffusers</p>
+    </header>
+
+    <section class="card">
+      <label for="prompt">Prompt</label>
+      <textarea id="prompt" rows="3" placeholder="A futuristic city at sunset, cinematic lighting, highly detailed"></textarea>
+
+      <label for="negative">Negative prompt (optional)</label>
+      <input id="negative" type="text" placeholder="blurry, low quality, distorted">
+
+      <div class="sliders">
+        <div>
+          <label for="steps">Inference steps: <span id="stepsVal">30</span></label>
+          <input id="steps" type="range" min="10" max="50" step="1" value="30">
+        </div>
+        <div>
+          <label for="guidance">Guidance scale: <span id="guidanceVal">7.5</span></label>
+          <input id="guidance" type="range" min="1" max="15" step="0.5" value="7.5">
+        </div>
+      </div>
+
+      <button id="generateBtn">Generate Image</button>
+      <p id="status" class="status"></p>
+    </section>
+
+    <section class="card result" id="resultBox" hidden>
+      <img id="outputImg" alt="Generated image">
+      <a id="downloadLink" class="download" download="generated.png">Download image</a>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
